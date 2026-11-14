@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoMaster | Mecánica Automotriz</title>
+
+<style>
+* {!DOCTYPE html>
+<html la
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #222;
+}
+
+
+#loginScreen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #071426, #172d48);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 35px #0005;
+}
+
+.login-box h1 {
+    color: #f07818;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 13px;
+    background: #f07818;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.login-box button:hover {
+    background: #d9630b;
+}
+
+#error {
+    color: red;
+    margin-top: 12px;
+}
+
+#contenido {
+    display: none;
+}
+
+header {
+    background: #071426;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #f07818;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    color: #f07818;
+}
+
+.logout {
+    background: #f07818;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 430px;
+    background: linear-gradient(#071426aa, #071426aa),
+    url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 10%;
+}
+
+.hero h1 {
+    font-size: 45px;
+    max-width: 650px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    background: #f07818;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 25px;
+    width: fit-content;
+}
+
+section {
+    padding: 65px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 35px;
+    color: #071426;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #0001;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #f07818;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.5;
+}
+
+.about {
+    background: #e9edf2;
+    text-align: center;
+}
+
+.about p {
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.contact {
+    background: #071426;
+    color: white;
+}
+
+.contact .section-title {
+    color: white;
+}
+
+.contact-form {
+    max-width: 550px;
+    margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    background: #f07818;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+footer {
+    background: #030b15;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+@media(max-width: 600px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    header {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="loginScreen">
+    <div class="login-box">
+        <h1>AutoMaster</h1>
+        <p>Acceso al sistema de mecánica automotriz</p>
+
+        <input type="text" id="usuario" placeholder="Ingrese su usuario">
+        <input type="password" id="clave" placeholder="Ingrese su contraseña">
+
+        <button onclick="iniciarSesion()">INICIAR SESIÓN</button>
+
+        <div id="error"></div>
+    </div>
+</div>
+
+
+<div id="contenido">
+
+<header>
+    <div class="logo">AutoMaster</div>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="logout" onclick="cerrarSesion()">Cerrar sesión</button>
+</header>
+
+<section class="hero" id="inicio">
+    <h1>Expertos en mecánica automotriz</h1>
+    <p>
+        En AutoMaster cuidamos tu vehículo con tecnología,
+        experiencia y profesionales especializados.
+    </p>
+    <a href="#contacto" class="btn">Solicitar una cita</a>
+</section>
+
+<section id="servicios">
+    <h2 class="section-title">Nuestros servicios</h2>
+
+    <div class="services">
+
+        <div class="card">
+            <h3>Mecánica general</h3>
+            <p>Revisión y reparación de los principales sistemas de tu vehículo.</p>
+        </div>
+
+        <div class="card">
+            <h3>Cambio de aceite</h3>
+            <p>Mantenimiento preventivo para proteger el motor y mejorar su rendimiento.</p>
+        </div>
+
+        <div class="card">
+            <h3>Diagnóstico automotriz</h3>
+            <p>Identificación de fallas mediante equipos de diagnóstico especializado.</p>
+        </div>
+
+        <div class="card">
+            <h3>Sistema de frenos</h3>
+            <p>Inspección y mantenimiento de discos, pastillas y líquido de frenos.</p>
+        </div>
+
+        <div class="card">
+            <h3>Sistema eléctrico</h3>
+            <p>Revisión de batería, alternador, luces y componentes eléctricos.</p>
+        </div>
+
+        <div class="card">
+            <h3>Suspensión</h3>
+            <p>Revisión de amortiguadores, dirección y componentes de suspensión.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="nosotros">
+    <h2 class="section-title">Sobre AutoMaster</h2>
+
+    <p>
+        Somos un taller dedicado al mantenimiento y reparación de vehículos.
+        Nuestro objetivo es ofrecer un servicio responsable, eficiente y de calidad.
+        Trabajamos para brindar confianza a nuestros clientes y mantener sus
+        vehículos en excelentes condiciones.
+    </p>
+</section>
+
+<section class="contact" id="contacto">
+    <h2 class="section-title">Agenda tu cita</h2>
+
+    <form class="contact-form" onsubmit="enviarWhatsApp(event)">
+
+        <input type="text" id="nombre" placeholder="Nombre completo" required>
+
+        <input type="tel" id="telefono" placeholder="Número de teléfono" required>
+
+        <select id="servicio" required>
+            <option value="">Selecciona un servicio</option>
+            <option>Mecánica general</option>
+            <option>Cambio de aceite</option>
+            <option>Diagnóstico automotriz</option>
+            <option>Sistema de frenos</option>
+            <option>Sistema eléctrico</option>
+            <option>Suspensión</option>
+        </select>
+
+        <textarea id="mensaje" rows="5" placeholder="Describe el problema de tu vehículo"></textarea>
+
+        <button type="submit">Enviar solicitud por WhatsApp</button>
+
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 AutoMaster - Mecánica Automotriz. Todos los derechos reservados.</p>
+</footer>
+
+</div>
+
+<script>
+/* CREDENCIALES DE ACCESO */
+const usuarioCorrecto = "admin";
+const claveCorrecta = "AutoMaster2026";
+
+/* INICIAR SESION */
+function iniciarSesion() {
+
+    const usuarioIngresado = document.getElementById("usuario").value;
+    const claveIngresada = document.getElementById("clave").value;
+    const error = document.getElementById("error");
+
+    if (
+        usuarioIngresado === usuarioCorrecto &&
+        claveIngresada === claveCorrecta
+    ) {
+
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("contenido").style.display = "block";
+
+    } else {
+
+        error.textContent = "Usuario o contraseña incorrectos.";
+
+    }
+}
+
+function cerrarSesion() {
+
+    document.getElementById("contenido").style.display = "none";
+    document.getElementById("loginScreen").style.display = "flex";
+
+    document.getElementById("usuario").value = "";
+    document.getElementById("clave").value = "";
+    document.getElementById("error").textContent = "";
+}
+
+function enviarWhatsApp(event) {
+
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const telefono = document.getElementById("telefono").value;
+    const servicio = document.getElementById("servicio").value;
+    const mensaje = document.getElementById("mensaje").value;
+
+    // REEMPLAZA ESTE NUMERO POR TU NUMERO DE WHATSAPP
+    const numeroWhatsApp = "593999999999";
+
+    const texto = `Hola, deseo solicitar una cita en AutoMaster.
+
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Servicio: ${servicio}
+Descripción: ${mensaje}`;
+
+    const url = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(texto);
+
+    window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
+
